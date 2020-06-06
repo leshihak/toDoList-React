@@ -5,7 +5,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 
-export const Header = ({searchTitle, returnToDoList}) => {
+export const Header = ({searchTitle, returnToDoList, showDone, allToDoList, showImportant}) => {
   const handleSearchTitle = (event) => {
     event.preventDefault();
     const search = document.getElementById('search-input').value;
@@ -19,9 +19,9 @@ export const Header = ({searchTitle, returnToDoList}) => {
       <div>
         <Button variant="primary" disabled>Filter:</Button>{' '}
         <ButtonGroup toggle>
-          <ToggleButton type="radio" name="radio" value="1">All</ToggleButton>
-          <ToggleButton type="radio" name="radio" value="2">Done</ToggleButton>
-          <ToggleButton type="radio" name="radio" value="3">Important</ToggleButton>
+          <ToggleButton type="radio" name="radio" value="1" onClick={allToDoList}>All</ToggleButton>
+          <ToggleButton type="radio" name="radio" value="2" onClick={showDone}>Done</ToggleButton>
+          <ToggleButton type="radio" name="radio" value="3" onClick={showImportant}>Important</ToggleButton>
         </ButtonGroup>
       </div>
       <Form inline className='search' id='formSearch'>

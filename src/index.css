@@ -130,3 +130,24 @@ body {
   position: absolute;
   top: -40%;
 }
+
+.strike {
+  text-decoration: line-through;
+}
+
+@media (max-width: 770px) {
+  .bottom-buttons {
+    left: 10%;
+  }
+
+  .addNewToDo {
+    left: 10%;
+  }
+}
+
+@media (max-width: 580px) {
+  .form-inline {
+    display: flex;
+    justify-content: center;
+  }
+}
