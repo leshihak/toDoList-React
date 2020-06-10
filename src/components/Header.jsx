@@ -1,36 +1,11 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import FormControl from 'react-bootstrap/FormControl';
-import Form from 'react-bootstrap/Form';
+import {Link} from 'react-router-dom';
 
-export const Header = ({searchTitle, returnToDoList, showDone, allToDoList, showImportant}) => {
-  const handleSearchTitle = (event) => {
-    event.preventDefault();
-    const search = document.getElementById('search-input').value;
-    searchTitle(search);
-    document.getElementById('formSearch').reset();
-  }
-
+export default function Header() {
   return (
-    <div className='header'>
-      <header className='header-title'>To Do List</header>
-      <div>
-        <Button variant="primary" disabled>Filter:</Button>{' '}
-        <ButtonGroup toggle>
-          <ToggleButton type="radio" name="radio" value="1" onClick={allToDoList}>All</ToggleButton>
-          <ToggleButton type="radio" name="radio" value="2" onClick={showDone}>Done</ToggleButton>
-          <ToggleButton type="radio" name="radio" value="3" onClick={showImportant}>Important</ToggleButton>
-        </ButtonGroup>
-      </div>
-      <Form inline className='search' id='formSearch'>
-        <FormControl type="text" placeholder="Search..." className=" mr-sm-2" id='search-input'/>
-        <Button type="submit" onClick={handleSearchTitle}>Search</Button>
-        <Button variant="dark" className='reset' onClick={returnToDoList}>Reset</Button>{' '}
-      </Form>
-    </div>
+    <header className='header'>
+      <div className="header-title">To Do List App</div>
+      <Link className='linkStyle' to='/'>Home</Link> | <Link className='linkStyle' to='/toDos'>ToDos</Link> | <Link className='linkStyle' to='/signUp'>Sign Up</Link> | <Link className='linkStyle' to='/contact'>Contacts</Link> | <Link className='linkStyle' to='/about'>About</Link>
+    </header>
   )
 }
-
-export default Header;

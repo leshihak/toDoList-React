@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
+import React, {useState} from '../../../node_modules/react';
+import Modal from '../../../node_modules/react-bootstrap/Modal';
+import Button from '../../../node_modules/react-bootstrap/Button';
+import Form from '../../../node_modules/react-bootstrap/Form';
+import InputGroup from '../../../node_modules/react-bootstrap/InputGroup';
+import FormControl from '../../../node_modules/react-bootstrap/FormControl';
 import Description from './Description';
 
 export const AddNewToDo = ({getToDo, onButtonClose}) => {  

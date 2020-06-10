@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 
 
-export const Bottom = ({onButtonClick, deleteAllToDo}) => {
+export const BottomToDos = ({onButtonClick, deleteAllToDo}) => {
   return (
     <div className='bottom-buttons'>
       <Button variant="primary" onClick={onButtonClick}>Create new To Do</Button>{' '}
@@ -11,4 +11,4 @@ export const Bottom = ({onButtonClick, deleteAllToDo}) => {
   );
 }
 
-export default Bottom;
+export default BottomToDos;

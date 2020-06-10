@@ -15,18 +15,37 @@ body {
 /* header  */
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.linkStyle {
+  font-weight: bold;
+  color: rgb(80, 80, 80);
+  text-decoration: none;
+}
+
+.linkStyle:hover {
+  color: rgb(0, 123, 255);
+  text-decoration: none;
 }
 
 .header-title {
   font-size: 50px;
   font-weight: 700;
   margin-bottom: 20px;
+  text-align: center;
   color: rgb(80, 80, 80);
+}
+
+/* HeaderToDos  */
+
+.headerToDos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .search {
@@ -133,6 +152,12 @@ body {
 
 .strike {
   text-decoration: line-through;
+}
+
+/* pages  */
+
+.pageImg {
+  width: 100%;
 }
 
 @media (max-width: 770px) {

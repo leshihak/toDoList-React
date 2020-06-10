@@ -1,6 +1,6 @@
-import React from 'react';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
+import React from '../../../node_modules/react';
+import InputGroup from '../../../node_modules/react-bootstrap/InputGroup';
+import FormControl from '../../../node_modules/react-bootstrap/FormControl';
 
 export const Description = () => {
   return (
