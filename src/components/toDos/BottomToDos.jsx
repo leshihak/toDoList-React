@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
+import React from '../../../node_modules/react';
+import Button from '../../../node_modules/react-bootstrap/Button';
 
 
 export const BottomToDos = ({onButtonClick, deleteAllToDo}) => {

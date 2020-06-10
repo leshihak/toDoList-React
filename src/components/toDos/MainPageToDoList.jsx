@@ -65,7 +65,6 @@ export const MainPageToDoList = () => {
 
   const returnToDoList = () => {
     setArrayFound([]);
-    document.getElementById('formSearch').reset();
   }
 
   const allToDoList = () => {

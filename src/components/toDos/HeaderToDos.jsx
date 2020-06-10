@@ -5,31 +5,38 @@ import ToggleButton from '../../../node_modules/react-bootstrap/ToggleButton';
 import FormControl from '../../../node_modules/react-bootstrap/FormControl';
 import Form from '../../../node_modules/react-bootstrap/Form';
 
-export const HeaderToDos = ({searchTitle, returnToDoList, showDone, allToDoList, showImportant}) => {
-  const handleSearchTitle = (event) => {
-    event.preventDefault();
-    const search = document.getElementById('search-input').value;
-    searchTitle(search);
-    document.getElementById('formSearch').reset();
+export default class HeaderToDos extends React.Component {
+  state = {
+    value : ''
   }
 
-  return (
-    <div className='headerToDos'>
-      <div>
-        <Button variant="primary" disabled>Filter:</Button>{' '}
-        <ButtonGroup toggle>
-          <ToggleButton type="radio" name="radio" value="1" onClick={allToDoList}>All</ToggleButton>
-          <ToggleButton type="radio" name="radio" value="2" onClick={showDone}>Done</ToggleButton>
-          <ToggleButton type="radio" name="radio" value="3" onClick={showImportant}>Important</ToggleButton>
-        </ButtonGroup>
-      </div>
-      <Form inline className='search' id='formSearch'>
-        <FormControl type="text" placeholder="Search..." className=" mr-sm-2" id='search-input'/>
-        <Button type="submit" onClick={handleSearchTitle}>Search</Button>
-        <Button variant="dark" className='reset' onClick={returnToDoList}>Reset</Button>{' '}
-      </Form>
-    </div>
-  )
-}
+  handleSearchTitle = event => {
+    event.preventDefault();
+    this.props.searchTitle(this.state.value);
+    this.setState({value: ''});
+  }
 
-export default HeaderToDos;
+  onChangeInput = event => {
+    this.setState({value: event.target.value}) 
+  }
+
+  render() {
+    return (
+      <div className='headerToDos'>
+        <div>
+          <Button variant="primary" disabled>Filter:</Button>{' '}
+          <ButtonGroup toggle>
+          <ToggleButton type="radio" name="radio" value="1" onClick={this.props.allToDoList}>All</ToggleButton>
+          <ToggleButton type="radio" name="radio" value="2" onClick={this.props.showDone}>Done</ToggleButton>
+          <ToggleButton type="radio" name="radio" value="3" onClick={this.props.showImportant}>Important</ToggleButton>
+        </ButtonGroup>
+        </div>
+        <Form inline className='search'>
+          <FormControl type="text" placeholder="Search..." className=" mr-sm-2" onChange={this.onChangeInput} value={this.state.value}/>
+          <Button type="submit" onClick={this.handleSearchTitle}>Search</Button>
+          <Button variant="dark" className='reset' onClick={this.props.returnToDoList}>Reset</Button>{' '}
+        </Form>
+      </div>
+    )
+  }
+} 

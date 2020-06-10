@@ -1,70 +1,73 @@
-import React, {useState} from '../../../node_modules/react';
+import React from '../../../node_modules/react';
 import Modal from '../../../node_modules/react-bootstrap/Modal';
 import Button from '../../../node_modules/react-bootstrap/Button';
 import Form from '../../../node_modules/react-bootstrap/Form';
 import InputGroup from '../../../node_modules/react-bootstrap/InputGroup';
 import FormControl from '../../../node_modules/react-bootstrap/FormControl';
 import Description from './Description';
+import Switch from "react-switch";
 
-export const AddNewToDo = ({getToDo, onButtonClose}) => {  
-  const [showDescription, setShowDescription] = useState(false);
+export default class AddNewToDo extends React.Component { 
+  state = {
+    showDescription: false,
+    nameToDo: '',
+    descriptionToDo: ''
+  } 
 
-  const onButtonSwitch = () => {
-    const customSwitch = document.getElementById('custom-switch');
-    customSwitch.checked ? setShowDescription(true) : setShowDescription(false); 
+  toggleChange = () => {
+    this.setState({showDescription: !this.state.showDescription});
   }
 
-  const handleGetToDo = () => {
-    const nameToDo = document.getElementById('nameToDo').value;
-    const descriptionToDo = document.getElementById('descriptionToDo');
-    getToDo(nameToDo, descriptionToDo ? descriptionToDo.value : null);
-    onButtonClose();
+  handleGetToDo = () => {
+    this.props.getToDo(this.state.nameToDo, this.state.showDescription ? this.state.descriptionToDo : null);
+    this.props.onButtonClose();
   }
 
-  return (
-    <div className='addNewToDo'>
-      <Modal.Dialog>
-        <div className='toDoModalForm'>
-          <Modal.Header>
-            <Modal.Title>Create a new To Do</Modal.Title>
-          </Modal.Header>
+  handleChange = event => {
+    this.setState({[event.target.name]: event.target.value});
+  }
 
-          <div className='toDoForm'>
-            <InputGroup className="mb-3">
-              <InputGroup.Prepend>
-                <InputGroup.Text id="inputGroup-sizing-default">Name of To Do:</InputGroup.Text>
-              </InputGroup.Prepend>
-              <FormControl
-                id='nameToDo'
-                aria-label="Write your To Do..."
-                aria-describedby="inputGroup-sizing-default"
-              />
-            </InputGroup>
+  render () {
+    return (
+      <div className='addNewToDo'>
+        <Modal.Dialog>
+          <div className='toDoModalForm'>
+            <Modal.Header>
+              <Modal.Title>Create a new To Do</Modal.Title>
+            </Modal.Header>
+  
+            <div className='toDoForm'>
+              <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                  <InputGroup.Text id="inputGroup-sizing-default">Name of To Do:</InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl
+                  onChange={this.handleChange}
+                  name='nameToDo'
+                  aria-label="Write your To Do..."
+                  aria-describedby="inputGroup-sizing-default"
+                />
+              </InputGroup>
+  
+              {this.state.showDescription ? <Description handleChange={this.handleChange} /> : null}
 
-            {showDescription ? <Description /> : null}
+              <div className='switch'>
+                <Switch className='toDoFormCheck' name="description" checked={this.state.showDescription} onChange={this.toggleChange}/> 
+                <div>Show description</div>
+              </div>
+            </div>
             
-            <Form className='toDoFormCheck'>
-              <Form.Check 
-                type="switch"
-                id="custom-switch"
-                label="Show description"
-                onClick={() => onButtonSwitch()}
-              />
-            </Form>
+  
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.props.onButtonClose}>Close</Button>
+              <Button variant="primary" onClick={this.handleGetToDo}>Save To Do</Button>
+            </Modal.Footer>
           </div>
           
-
-          <Modal.Footer>
-            <Button variant="secondary" onClick={onButtonClose}>Close</Button>
-            <Button variant="primary" onClick={handleGetToDo}>Save To Do</Button>
-          </Modal.Footer>
-        </div>
-        
-      </Modal.Dialog>
-
-      <div className='opacityDiv'></div>
-    </div>
-  )
+        </Modal.Dialog>
+  
+        <div className='opacityDiv'></div>
+      </div>
+    )
+  }
 }
-
-export default AddNewToDo;
