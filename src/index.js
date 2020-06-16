@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Main from './components/Main';
+import App from './components/App';
+// import {BrowserRouter, Switch} from 'react-router-dom';
 
 ReactDOM.render(
-  <Main />, document.getElementById('root')
+  <App />, document.getElementById('root')
 );

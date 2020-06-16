@@ -1,3 +1,20 @@
+@media (max-width: 770px) {
+  .bottom-buttons {
+    left: 10%;
+  }
+
+  .addNewToDo {
+    left: 10%;
+  }
+}
+
+@media (max-width: 580px) {
+  .form-inline {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -118,7 +135,7 @@ body {
   width: 15px;
 }
 
-/* addNewToDo  */ 
+/* addNewToDo  */
 
 .addNewToDo {
   width: 100%;
@@ -144,7 +161,7 @@ body {
   width: 100%;
   max-width: 600px;
   height: 1000px;
-  opacity: 0.5;
+  opacity: 0.8;
   background-color: rgb(255, 255, 255);
   position: absolute;
   top: -40%;
@@ -170,19 +187,16 @@ body {
   width: 100%;
 }
 
-@media (max-width: 770px) {
-  .bottom-buttons {
-    left: 10%;
-  }
+/* signUpForm */
 
-  .addNewToDo {
-    left: 10%;
-  }
+.error {
+  color: red;
+  font-size: 14px;
 }
 
-@media (max-width: 580px) {
-  .form-inline {
-    display: flex;
-    justify-content: center;
-  }
+.contactImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
